@@ -2,6 +2,9 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+//process.env stores all of our environment variables
+//heroku will change the port based on on the PORT env variable
+const port = process.env.PORT || 3000; //if PORT doesn't exist, default to port 3000
 var app = express();
 
 //handle partials allow for reusablilty
@@ -65,6 +68,6 @@ app.get('/bad', (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log('Server is up on port 3000');
+app.listen(port, () => {
+  console.log(`Server is up on port ${port}`);
 });
